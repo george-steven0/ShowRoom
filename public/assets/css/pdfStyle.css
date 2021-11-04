@@ -1,0 +1,102 @@
+
+/* Main Content */
+
+.main-page .main-content .sell-bill-cont .main-title span{
+    font-size: 35px;
+    font-weight: bolder;
+}
+.main-page .main-content .traff-manager-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+.main-page .main-content .sell-bill-cont .main-title input{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.main-page .main-content .greeting-title{
+    font-size: 25px;
+}
+
+.main-page .main-content .form-input-container > div{
+    font-size: 22px;
+    font-weight: bold;
+}
+.form-input-container-2 > div{
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+.nameBoxContainer > div{
+    font-size: 22px;
+    font-weight: bold;
+}
+.clientForm >div{
+    font-size: 22px !important;
+    font-weight: bold !important;
+}
+.comericalRecord > div{
+    font-size: 22px;
+    font-weight: bold;
+    margin-right: 0px !important;
+}
+.dateSign > div {
+    font-size: 21px;
+    font-weight: bold;
+}
+.nameBoxContainer2 > div{
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.main-page .main-content .req-text{
+    font-size: 21px;
+    font-weight: bold;
+}
+.main-page .main-content .sell-bill-cont input{
+    font-weight: bold;
+}
+.main-page .main-content .sell-bill-cont .bill-footer1{
+    font-size: 21px;
+    font-weight: bold;
+}
+.main-page .main-content .sell-bill-cont .bill-address{
+    margin-top: 5px;
+}
+.main-page .main-content .letter-container input{
+    border: none;
+    border-bottom: 1px solid #2936468e;
+    padding: 2px 8px;
+}
+.taxBillTableDisblayChase >input{
+    border: none;
+}
+
+/* Main Page */
+
+
+/* Select Libirary */
+.select2-container--default .select2-search--dropdown .select2-search__field{
+    text-align: right;
+}
+@media print {
+    .main-content,.main-page .main-content .sell-bill-cont{
+        overflow: hidden !important;
+    }
+    
+}
+#traffic-name > input{
+    width: 70% !important;
+}
+.tax-bill,.tax-billCar{
+    display: block !important;
+    direction: rtl;
+    padding: 10px 65px;
+}
+.carPriceTaxTitle{
+    text-align: right;
+}
+#taxBillBycBrand,#taxBillBycModel,.taxBillTableDisblayChase{
+    text-align: right !important;
+}
+.taxBillFinallPrice textarea{
+    height: 33px !important;
+}

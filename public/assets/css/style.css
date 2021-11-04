@@ -1,0 +1,713 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Times New Roman', Times, serif;
+    padding: 0px;
+    margin: 0px;
+}
+html,body{
+    width: 100%;
+    height: 100%;
+}
+
+/* Login Page */
+.login{
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/bg-2.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.login .overlay{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,.5);
+}
+.login .login-form{
+    width: 100%;
+    height: 400px;
+    margin: 80px auto;
+    background-color: rgba(31, 40, 51, 0.647);
+    border: 1px solid #1f2833;
+    border-radius: 30px;
+    transition: all .5s ease-in-out;
+}
+.login .login-form:hover{
+    border-radius: 10px;
+    background-color: rgba(31, 40, 51, 0.847);
+}
+.login .login-form .login-logo{
+    width: 100%;
+    padding: 25px 15px;
+    text-align: center;
+}
+.login .login-form .login-logo i{
+    font-size: 45px;
+    color: #45a29e;
+}
+.login .login-form .form-body{
+    margin-top: 40px;
+}
+.login .login-form .form-body input{
+    margin-bottom: 15px;
+    padding: 1.375rem .75rem;
+    background-color: #0b0c10c0;
+    color: #45a29e;
+    border-color: #3b918c;
+}
+.login .login-form .form-body .submit-btn{
+    width: 100%;
+    text-align: center;
+    margin-top: 60px;
+}
+.login .login-form .form-body .submit-btn button{
+    width: auto !important;
+    padding: .575rem 3.75rem;
+    background-color: #45a29e;
+    color: #fff;
+}
+/* Login Page */
+
+
+
+/* Main Page */
+.main-page .side-navbar-cont{
+    width: 100%;
+    height: 200vh;
+    background-color: #202327;
+    position: relative;
+    color: #66fcf1;
+}
+.main-page .side-navbar-cont .close-btn{
+    position: absolute;
+    top: .5%;
+    right: 6%;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px;
+    cursor: pointer;
+}
+.main-page .side-navbar-cont .nav-content .nav-logo{
+    width: 100%;
+    margin-top: 45px;
+    padding: 15px 0px;
+    text-align: center;
+    border-bottom: 1px solid #686a6d;
+}
+.main-page .side-navbar-cont .nav-content .nav-logo img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 5px 0px 7px #87fff786,
+                -5px 0px 7px #87fff786;
+}
+.main-page .side-navbar-cont .nav-content .nav-list{
+    text-align: right;
+    margin-top: 15px;
+}
+.main-page .side-navbar-cont .nav-content .nav-list a{
+    color: #45a29e;
+    
+}
+
+.main-page .side-navbar-cont .nav-content .nav-list i{
+    margin-left: 10px;
+    font-size: 19px;
+}
+.side-navbar-cont .nav-content .nav-list .list-group-item{
+    background-color: transparent;
+    border: none;
+    transition: all .2s ease-in-out;
+}
+.side-navbar-cont .nav-content .nav-list .list-group-item.active{
+    background-color: #45a29e;
+    color: #66fcf1;
+    border: 1px solid #8af7f1;
+    border-radius: 10px;
+}
+.side-navbar-cont .nav-content .nav-list .sub-list{
+    background-color: #45a29d21;
+    padding: 8px 15px;
+    border-radius: 0px;
+    margin-bottom: 5px;
+}
+.side-navbar-cont .nav-content .nav-list .sub-list a {
+    color: #fff;
+    margin-bottom: 15px;
+    text-decoration: none;
+}
+
+
+
+
+
+/* Main Content */
+.main-page .main-content{
+    width: 100%;
+    text-align: right;
+}
+.main-page .main-content .open-btn{
+    position: relative;
+    width: 5%;
+    top: 1%;
+    left: 0%;
+    font-size: 20px;
+    font-weight: bolder;
+    padding: 10px;
+    cursor: pointer;
+    color: #45a29e;
+    display: none;
+}
+
+.main-page .main-content .bill-type-select{
+    background-color: #3b918c;
+    color: #fff;
+    text-align: center !important;
+    direction: rtl !important;
+    border: none;
+    transition: all .5s ease-in-out;
+    margin-bottom: 15px;
+}
+.main-page .main-content .bill-type-select:hover{
+    box-shadow: 0 4px 11px -2px #3b918c;               
+}
+.main-page .main-content .sell-bill-cont{
+    direction: rtl;
+    padding: 10px 50px;
+}
+.main-page .main-content .sell-bill-cont .bill-header{
+    margin-top: 10px;
+}
+.main-page .main-content .title p{
+    line-height: .8;
+}
+.main-page .main-content .bill-logo{
+    text-align: left;
+}
+.main-page .main-content .bill-logo img{
+    width: 90px;
+    height: 90px;
+    margin-top: -20px;
+}
+.main-page .main-content .sell-bill-cont .main-title{
+    margin-top: 65px;
+}
+.main-page .main-content .sell-bill-cont .main-title span{
+    margin-left: 5px;
+    font-size: 25px;
+    font-weight: bold;
+}
+.main-page .main-content .traff-manager-title{
+    font-size: 20px;
+    font-weight: 700;
+}
+.main-page .main-content .sell-bill-cont .main-title input{
+    border: none;
+    width: 120px;
+}
+.main-page .main-content .traff-input{
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+}
+.main-page .main-content .greeting-title{
+    font-size: 20px;
+    font-weight: bolder;
+}
+.main-page .main-content .sell-bill-cont .serialNum{
+    text-align: center;
+}
+.main-page .main-content .sell-bill-cont .bottom-header{
+    text-align: left;
+}
+.main-page .main-content .sell-bill-cont select{
+    border: none;
+    border-bottom: 1px solid #2936468e;
+    padding: 3px 10px;
+    width: 175px;
+}
+.main-page .main-content .form-input-container{
+    display: inline-flex;
+    flex-wrap: wrap;
+}
+.main-page .main-content .form-input-container > div{
+    flex: 0 0 47%;
+    margin:auto;
+    margin-bottom: 23px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.main-page .main-content .form-input-container > div:nth-of-type(odd){
+    flex: 0 0 51% !important;
+}
+.form-input-container-2{
+    display: inline-flex !important;
+    flex-wrap: wrap !important;
+    width: 100% !important;
+    justify-content: space-between !important;
+}
+.form-input-container-2 > div{
+    flex: 0 0 32% !important;
+    margin-bottom: 23px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.nameBoxContainer{
+    display: flex;
+}
+.nameBoxContainer > div{
+    flex:0 0 100%;
+    margin-bottom: 23px;
+    font-size: 18px;
+    font-weight: 600;
+}
+.clientForm{
+    display: flex !important;
+    width: 100% !important;
+}
+.clientForm >div{
+    flex:0 0 48% !important;
+    margin-bottom: 23px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.comericalRecord{
+    display: flex !important;
+    width: 100% !important;
+}
+.comericalRecord > div{
+    flex:0 0 94% !important;
+    margin-bottom: 23px;
+    font-size: 18px;
+    font-weight: 600;
+    margin-right: 0px !important;
+}
+.dateSign{
+    display: inline-flex;
+    width: 100%;
+}
+.dateSign > div {
+    flex: 0 0 49%;
+    font-size: 18px;
+    font-weight: 600;
+}
+.nameBoxContainer2{
+    display: flex !important;
+    width: 100% !important;
+}
+.nameBoxContainer2 > div{
+    flex: 0 0 100% !important;
+    margin-bottom: 23px !important;
+    font-size: 18px !important;
+    font-weight: 600 !important;
+}
+.main-page .main-content .req-text{
+    font-size: 19px;
+}
+.main-page .main-content .sell-bill-cont input{
+    border: none;
+    border-bottom: 1px solid #2936468e;
+    padding: 3px 10px;
+    text-align: right;
+    width: 62%;
+}
+.main-page .main-content .sell-bill-cont .bill-footer1{
+    margin-top: 15px;
+    text-align: right;
+}
+.main-page .main-content .sell-bill-cont .bill-footer2{
+    text-align: left;
+}
+.main-page .main-content .sell-bill-cont .bill-footer1 input{
+    border: none;
+    border-bottom: 1px solid #2936468e;
+    margin-bottom: 10px;
+    margin-right: 10px;
+}
+.main-page .main-content .sell-bill-cont .bill-address{
+    margin-top: 5px;
+}
+.main-page .main-content .sell-bill-cont .bill-address input{
+    border: none;
+    border-bottom: 1px solid #2936468e;
+    width: 450px;
+}
+
+.main-page .main-content .cash-bill,.main-page .main-content .bills-type,.main-page .main-content .renew-letter-bill,.finish-letter-bill, .client-account-view{
+    display: none;
+}
+
+.main-page .main-content .letter-container{
+    width: 100%;
+    direction: rtl !important;
+}
+
+#traffic-name{
+    font-weight: bolder;
+    font-size: 22px;
+}
+
+.main-page .main-content .letter-container .greeting{
+    font-size: 20px;
+}
+.letter-heading{
+    font-weight: bold !important;
+}
+.main-page .main-content .storage-cont{
+    direction: rtl;
+}
+.main-page .main-content .storage-cont .buy-select{
+    margin-top: 15px;
+}
+.main-page .main-content .choose-type-btn{
+    background-color: #3b918c;
+    color: #fff;
+    padding: 5px 45px;
+    border-radius: 25px;
+}
+.main-page .main-content .buy-table{
+    margin-top: 25px;
+    text-align: center;
+}
+.main-page .main-content .add_new{
+    padding: 5px 35px;
+    border-radius: 25px;
+}
+.add-new-modal,.accounts-cont{
+    direction: rtl;
+}
+.add-new-modal .modal-footer{
+    justify-content: center;
+    width: 100%;
+}
+.add-new-modal .modal-footer button{
+    padding: 5px 20px;
+}
+
+.main-page .main-content div.table-responsive>div.dataTables_wrapper>div.row{
+    flex-direction: row-reverse;
+}
+.main-page .main-content div.table-responsive>div.dataTables_wrapper>div.row .dataTables_length{
+    text-align: left;
+}
+
+.main-page .main-content .all-bills-table-container{
+    direction: rtl;
+    text-align: center;
+}
+.main-page .main-content .clients div.dataTables_wrapper>div.row {
+    flex-direction: row !important;
+}
+div.dataTables_wrapper div.dataTables_info{
+    text-align: left;
+}
+.main-page .main-content .clients-table{
+    direction: rtl;
+    text-align: center;
+}
+.accounts-data, .accounts-label{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.accounts-label label{
+    font-size: 25px;
+    font-weight: bold;
+    color: #3b918c;
+}
+.accounts-data input{
+    border: 1px solid #45a29e;
+    padding: 10px 25px;
+    border-radius: 15px;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 1.5px;
+    color: #3b918c;
+}
+/* Main Page */
+
+
+/* Tax Bill */
+.tax-bill,.tax-billCar{
+    margin-top: 35px;
+    direction: rtl;
+    display: none;
+}
+.billSerialCont{
+    width: 180px;
+    height: 55px;
+    border: 1px solid rgba(124,122,122,.7);
+    text-align: center;
+    margin: auto;
+    
+}
+.billSerialCont > .taxBillTitle{
+    width: 70%;
+    font-size: 20px;
+    font-weight: bold;
+    margin: auto;
+    padding: 8px 0px 5px 0px;
+    line-height: 15px;
+    border-bottom: 1px solid rgba(124,122,122,.7);
+}
+.billSerialCont .taxBillSerialCont{
+    margin-top: 1px;
+}
+.billSerialCont p > .taxSerialInp{
+    width: 90%;
+    margin: auto;
+    height: 18px;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+}
+.billDetails{
+    margin: 20px 0px 40px;
+}
+.billDetails ul{
+    list-style: none;
+    padding: 0px;
+    text-align: right;
+    direction: rtl !important;
+}
+.billDetails ul li{
+    margin-bottom: 10px;
+}
+.billDetails ul li > span{
+    display: inline-block;
+    width: 125px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.billDetails ul li > input{
+    width: 200px;
+    text-align: right;
+    padding: 0px 10px 0px 5px;
+    font-size: 17px;
+    font-weight: bold;
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,.5);
+}
+.taxBillTable{
+    margin-bottom: 50px;
+}
+.taxBillTable table thead{
+    background-color: rgba(123, 126, 129, 0.347);
+}
+.taxBillTable table thead th{
+    border:1.5px solid rgba(22, 22, 22, 0.4);
+    text-align: center;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 5px !important;
+}
+.taxBillTable table thead th:first-child{
+    width: 230px;
+}
+.taxBillTable table thead th:nth-child(2){
+    width: 150px;
+}
+.taxBillTable table thead th:nth-child(3){
+    width: 250px;
+}
+.taxBillTable table tbody .carPriceTax > td{
+    height: 450px;
+}
+.taxBillTable table tbody tr > td >input{
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 2px 8px;
+    font-size: 19px;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+}
+.taxBillTable table tbody tr > td >textarea{
+    width: 100%;
+    height: 100%;
+    resize: none;
+    border: none;
+    padding: 2px 8px;
+    font-size: 19px;
+    font-weight: bold;
+}
+.carPriceTaxTitle td:nth-child(2) > span{
+    display: block;
+    font-weight: 700;
+    font-size: 19px;
+}
+.carPriceTaxTitle td:nth-child(2) > span:nth-child(2){
+    margin-top: 10px;
+}
+.carPriceTaxTitle input{
+    font-size: 18px !important;
+}
+.taxBillSignture{
+    text-align: left;
+    font-size: 19px;
+    font-weight: 700;
+    margin-top: 170px;
+}
+.taxBillFinallPrice textarea{
+    width: 100%;
+    height: 27px !important;
+}
+/* Tax Bill */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Custom Style for datatables */
+table.dataTable thead .sorting:after,table.dataTable thead .sorting_asc:after,table.dataTable thead .sorting_desc:after{
+    content: "" !important;
+}
+div.dataTables_wrapper div.dataTables_length label,div.dataTables_wrapper div.dataTables_filter label{
+    color: #45a29e;
+}
+div.dataTables_wrapper div.dataTables_filter input{
+    border: none;
+    border-bottom: 1px solid #45a29e;
+}
+div.dataTables_wrapper div.dataTables_length select{
+    background-color: #45a29d31;
+}
+div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+}
+
+/* fix pagination direction for some pages */
+
+.buy-bill-cont div.dataTables_wrapper div.dataTables_paginate ul.pagination,.add-clients-container div.dataTables_wrapper div.dataTables_paginate ul.pagination,.add-dealer-container div.dataTables_wrapper div.dataTables_paginate ul.pagination{
+    flex-direction: row !important;
+}
+/* fix pagination direction for some pages */
+
+
+/* Select Libirary */
+.select2-container{
+    width: 73% !important;
+    text-align: right;
+    
+}
+.select2-container--open .select2-dropdown--below,.select2-container--default .select2-search--dropdown .select2-search__field{
+    text-align: right;
+}
+.select2-container .select2-selection--single{
+    border:none !important;
+    border-bottom: 1px solid #293646a8 !important;
+}
+
+.select2-selection__arrow b{
+    display:none !important;
+}
+.buyBillSelect span{
+    width: 100% !important;
+}
+
+/* end select2 */
+
+@media print {
+    *{
+        margin: auto;
+    }
+    .main-page .main-content .form-input-container > div,.form-input-container-2 > div,.nameBoxContainer > div{
+        margin-bottom: 27px;
+    }
+    .side-navbar-cont,.selectBillType,.add_new,.save-bill-btn,.open-btn{
+        display: none !important;
+    }
+    
+    .form-input-container-2 input{
+        width: 65% !important;
+    }
+    .form-input-container-2 > div{
+        flex:0 0 32%;
+    }
+    .mDate{
+        text-align: right !important;
+        border: none !important;
+        padding: 0px !important;
+    }
+    .bill-footer2{
+        text-align: center !important;
+    }
+    .traff-manager-title > input {
+        width: 60% !important;
+    }
+    .renew-letter-bill,.finish-letter-bill,.installment-bill,.cash-bill{
+        margin-top: 80px !important;
+    }    
+    .tax-bill{
+        margin-top: 180px;
+    }
+  
+    .billDetails ul li > input{
+        border: none;
+    }
+    .taxBillTable table thead th:first-child{
+        width: 23% !important;
+    }
+    .taxBillTable table thead th:nth-child(2){
+        width: 15% !important;
+    }
+    .taxBillTable table thead th:nth-child(3){
+        width: 15% !important;
+    }
+    .taxBillTable table tbody tr > td >input{
+        border: none !important;
+    }
+    .taxBillTableDisblayChase >input{
+        border: none !important;
+    }
+    .tax-billCar{
+        margin-top: 180px;
+    }
+    .taxBillSignture{
+        margin-top: 100px !important;
+    }
+}
+
+.taxBillSerialCont > span{
+    width: 100% !important;
+    text-align: center !important;
+    padding: 0px !important;
+}
+.taxBillSerialCont .select2-container .select2-selection--single .select2-selection__rendered{
+    padding: 0px !important;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+#taxBrand,#taxModel{
+    padding-right: 35px;
+    text-align: right !important;
+}
+.taxBillTableDisblayChase >label{
+    display: inline-block;
+    font-size: 18px;
+    font-weight: bold;
+    padding-left: 6px;
+}
+.taxBillTableDisblayChase >input{
+    width: 80%;
+    border: none;
+    border-bottom: 1px solid #eee;
+    padding: 2px 8px;
+    font-size: 19px;
+    font-weight: bold;
+}
