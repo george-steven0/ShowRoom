@@ -137,8 +137,9 @@ class SellBillController extends Controller
         return redirect()->route('allData');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request)
     {
+        $id = $request->id;
         if(SellBill::find($id)==null)
         {
             $sellbill = SellBillByc::find($id);
@@ -148,7 +149,7 @@ class SellBillController extends Controller
             $sellbill = SellBill::find($id);
         }
         $sellbill->delete();
-        return redirect()->route('allData');
+        return response()->json();
     }
 
     public function show($id)

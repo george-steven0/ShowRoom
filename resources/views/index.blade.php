@@ -156,10 +156,10 @@
                                                         <td>فاتوره نقدا</td>
                                                         @endif
                                                        <form action="{{ route('edit.sellbill',$sellbill->id) }}"><td><button class="btn btn-outline-warning">تعديل</button></td></form>
-                                                        <form id="deleteSellbill" action="{{ route('delete.sellbill',$sellbill->id) }}" method="POST">
+                                                        <form id="deleteSellbill" >
                                                             @csrf
-                                                            <input type="hidden" id="sellbillid" value="{{ $sellbill->id }}">
-                                                            <td><button type="submit" class="btn btn-danger show_confirm">حذف</button></td>
+                                                            <input type="hidden" name="sellbillid" id="sellbillid">
+                                                            <td><a data-id="{{$sellbill->id}}" type="submit" class="btn btn-danger show_confirm">حذف</a></td>
                                                         </form>
 
                                                         <td><a target="_blank" href="{{ route('show.sellbill',$sellbill->id) }}" class="btn btn-success">عرض</a></td>
@@ -3053,6 +3053,52 @@
 
         $('#taxBillCarBillTotal').val( price + added + developfee + insurance + insurancefee ) ;
    })
+</script>
+
+{{--  Sell Bill Delete Confirmation --}}
+<script>
+    $('#deleteSellbill').submit(function(e){
+      let id = $('#sellbillid').val();
+      console.log(id);
+      let _token = $("input[name=_token]").val();
+      $.ajax({
+          url:"{{ route('delete.sellbill') }}",
+          type:'POST',
+          data:{
+              id:id,
+              _token:_token
+          },
+          error:function(error)
+          {
+              console.log(error);
+          },
+          success:function(response)
+          {
+            location.reload();
+          }
+      });
+    });
+
+     $('.show_confirm').click(function(event) {
+          var form =  $('#deleteSellbill');
+          var id = $(this).data('id');
+          $("#sellbillid").val(id);
+          event.preventDefault();
+          swal({
+              title: `${id} :هل انت متأكد من مسح الفاتورة رقم`,
+              text: "!!الفاتورة لا يمكن استرجعها مجددا بعد مسحها",
+              icon: "warning",
+              buttons: true,
+              dangerMode: true,
+          })
+          .then((willDelete) => {
+            if (willDelete) {
+              form.submit();
+            }
+          });
+      });
+
+
 </script>
 </body>
 </html>

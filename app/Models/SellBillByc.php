@@ -18,7 +18,8 @@ class SellBillByc extends Model
 
     public function client()
     {
-        $client = Client::find($this->client_id);
+        $client = Client::withTrashed()->where('id',$this->client_id)->get()->first();
+        // $client = Client::find($this->client_id);
         return $client;
     }
 

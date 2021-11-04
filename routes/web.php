@@ -52,7 +52,7 @@ Route::GET('/getChaseInfo/{selected}',[BuyBillController::class,'chaseInfo']);
 Route::POST('/store/sellbill',[SellBillController::class,'store'])->name('store.sellbill');
 Route::GET('/edit/sellbill/{id}',[SellBillController::class,'edit'])->name('edit.sellbill');
 Route::POST('/update/sellbill/{id}',[SellBillController::class,'update'])->name('update.sellbill');
-Route::POST('/delete/sellbill/{sellbill}',[SellBillController::class,'destroy'])->name('delete.sellbill');
+Route::POST('/delete/sellbill',[SellBillController::class,'destroy'])->name('delete.sellbill');
 Route::GET('/Show/sellbill/{sellbill}',[SellBillController::class,'show'])->name('show.sellbill');
 Route::GET('/sellBillBycInfo/{id}',[SellBillController::class,'getSellBillBycInfo'])->name('info.sellbillbyc');
 Route::GET('/sellBillCarInfo/{id}',[SellBillController::class,'getSellBillCarInfo'])->name('info.sellbillcar');
