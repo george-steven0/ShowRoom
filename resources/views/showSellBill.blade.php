@@ -153,7 +153,11 @@
                         <!-- Second Form Input Container -->
 
                         <div class="mt-3 font-weight-bold req-text">
+                        @if($sellbill->installments==1)
                             <p>رجاء إتخاذ إجراءات الترخيص بإسم المشترى حيث تم البيع مع حفظ حق الملكية لصالحنا مع عدم التجديد السنوى إلابخطاب بالموافقة على التجديد</p>
+                            @else
+                            <p>رجاء إتخاذ إجراءات الترخيص بإسم المشترى حيث تم البيع نقدا</p>
+                            @endif
                         </div>
 
                         <div>

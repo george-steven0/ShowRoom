@@ -482,13 +482,16 @@ div.dataTables_wrapper div.dataTables_info{
     font-weight: bold;
 }
 .billDetails ul li > input{
-    width: 200px;
+    width: 350px;
     text-align: right;
     padding: 0px 10px 0px 5px;
     font-size: 17px;
     font-weight: bold;
     border: none;
     border-bottom: 1px solid rgba(0,0,0,.5);
+}
+.billDetails ul li > input[type="date"]{
+    text-align: right !important;
 }
 .taxBillTable{
     margin-bottom: 50px;
@@ -709,5 +712,14 @@ div.dataTables_wrapper div.dataTables_paginate ul.pagination{
     border-bottom: 1px solid #eee;
     padding: 2px 8px;
     font-size: 19px;
+    font-weight: bold;
+}
+.editSelectBox{
+    width: 100%;
+    background-color: #1f2833;
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+    font-size: 20px;
     font-weight: bold;
 }

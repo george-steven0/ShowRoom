@@ -127,7 +127,6 @@
                                                     <th>نوع الفاتوره</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th></th>
                                                 </thead>
 
                                                 <tbody>
@@ -159,7 +158,6 @@
                                                         <form id="deleteSellbill" >
                                                             @csrf
                                                             <input type="hidden" name="sellbillid" id="sellbillid">
-                                                            <td><a data-id="{{$sellbill->id}}" type="submit" class="btn btn-danger show_confirm">حذف</a></td>
                                                         </form>
 
                                                         <td><a target="_blank" href="{{ route('show.sellbill',$sellbill->id) }}" class="btn btn-success">عرض</a></td>
@@ -1946,7 +1944,6 @@
                                                     <th>تاريخ الفاتورة</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th></th>
                                                 </thead>
 
                                                 <tbody>
@@ -1963,7 +1960,6 @@
                                                         <td><a href="{{ route('edit.taxBillByc',$taxbill->id) }}" class="btn btn-warning">تعديل</a></td>
                                                         <form action="{{ route('delete.taxBillByc',$taxbill->id) }}" method="POST">
                                                             @csrf
-                                                        <td><button class="btn btn-danger">حذف</button></td>
                                                         </form>
                                                         <td><a href="{{ route('show.taxBillByc',$taxbill->id) }}" target="_blank" class="btn btn-success">عرض</a></td>
                                                     </tr>
@@ -2096,7 +2092,6 @@
                                                     <th>تاريخ الفاتورة</th>
                                                     <th></th>
                                                     <th></th>
-                                                    <th></th>
                                                 </thead>
 
                                                 <tbody>
@@ -2112,7 +2107,6 @@
                                                         <td><a href="{{ route('edit.taxBillCar',$taxbill->id) }}" class="btn btn-warning">تعديل</a></td>
                                                         <form action="{{ route('delete.taxBillCar',$taxbill->id) }}" method="POST">
                                                         @csrf
-                                                            <td><button type="submit" class="btn btn-danger">حذف</button></td>
                                                         </form>
                                                         <td><a href="{{ route('show.taxBillCar',$taxbill->id) }}" class="btn btn-success" target="_blank">عرض</a></td>
                                                     </tr>

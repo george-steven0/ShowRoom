@@ -18,6 +18,7 @@
 
 <div class="main-page">
     <div class="main-content">
+        
         <!-- Installment bill container  -->
         <div class="sell-bill-cont installment-bill">
             <div class="container-fluid">
@@ -27,6 +28,10 @@
 
                 <form id="sellBillForm" method="post" action="{{route('update.sellbill',$sellbill->id)}}" class="col-12">
                 @csrf
+                <select class="editSelectBox" name="installments">
+                    <option value="1">حفظ ملكية</option>
+                    <option value="0">نقدا</option>
+                </select>
                     <div class="col-12 text-center main-title font-weight-bold mb-3">
                             @if($sellbill->installments==1)
                             <span>فاتورة مع حفظ حق الملكية</span>
@@ -108,7 +113,7 @@
                             </div>
 
 
-                            <input id="installments" type="hidden" name="installments" value="{{$sellbill->installments}}">
+                            <!-- <input id="installments" type="hidden" name="installments" value="{{$sellbill->installments}}"> -->
 
                         </div> <!-- Form Input Container -->
 
@@ -171,7 +176,11 @@
                         <!-- Second Form Input Container -->
 
                         <div class="mt-4 font-weight-bold req-text">
+                            @if($sellbill->installments==1)
                             <p>رجاء إتخاذ إجراءات الترخيص بإسم المشترى حيث تم البيع مع حفظ حق الملكية لصالحنا مع عدم التجديد السنوى إلابخطاب بالموافقة على التجديد</p>
+                            @else
+                            <p>رجاء إتخاذ إجراءات الترخيص بإسم المشترى حيث تم البيع نقدا</p>
+                            @endif
                         </div>
 
                         <div>
