@@ -45,11 +45,11 @@
 
                                         <a id="list-sell-list" data-toggle="list" href="#sell-bill" role="tab" aria-controls="home">فاتورة بيع</a>
 
-                                        <a id="list-tax-list" data-toggle="list" href="#tax-bill" role="tab" aria-controls="taxBill">فاتورة ضريبية توكتوك</a>
+                                        <a id="list-buy-list" data-toggle="list" href="#buy-bill" role="tab" aria-controls="profile">فاتورة شراء </a>
 
                                         <a id="list-tax-list" data-toggle="list" href="#tax-billCar" role="tab" aria-controls="taxBillCar">فاتورة ضريبية سيارة</a>
 
-                                        <a id="list-buy-list" data-toggle="list" href="#buy-bill" role="tab" aria-controls="profile">فاتورة شراء </a>
+                                        <a id="list-tax-list" data-toggle="list" href="#tax-bill" role="tab" aria-controls="taxBill">فاتورة ضريبية توكتوك</a>
 
                                         <a id="list-renew-list" data-toggle="list" href="#renew-bill" role="tab" aria-controls="renew">خطاب تجديد </a>
 
@@ -770,31 +770,24 @@
                                                 </thead>
 
                                                 <tbody>
+                                                    @foreach ($renews as$index => $renew )
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>000235</td>
-                                                        <td>جورج استيفن</td>
-                                                        <td>سيارة</td>
-                                                        <td>تويوتا</td>
-                                                        <td>55865</td>
-                                                        <td>74421</td>
-                                                        <td>25/10/2021</td>
-                                                        <td><button class="btn btn-outline-warning">تعديل</button></td>
-                                                        <td><button class="btn btn-danger">حذف</button></td>
+                                                        <td>{{ $index + 1 }}</td>
+                                                        <td>{{ $renew->sellbillId }}</td>
+                                                        <td>{{ $renew->client() }}</td>
+                                                        <td>{{ $renew->type }}</td>
+                                                        <td>{{ $renew->brand }}</td>
+                                                        <td>{{ $renew->chase }}</td>
+                                                        <td>{{ $renew->motor }}</td>
+                                                        <td>{{ $renew->date }}</td>
+                                                        <td><a href="{{ route('edit.renew',$renew->id) }}"class="btn btn-outline-warning">تعديل</a></td>
+                                                        <form action="{{ route('delete.renew',$renew->id) }}" method="POST">
+                                                            @csrf
+                                                            <td><button class="btn btn-danger">حذف</button></td>
+                                                        </form>
                                                     </tr>
+                                                    @endforeach
 
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>000246</td>
-                                                        <td>مايكل مرقص</td>
-                                                        <td>موتوسيكل</td>
-                                                        <td>بوكسر 150</td>
-                                                        <td>112563</td>
-                                                        <td>58664</td>
-                                                        <td>25/12/2022</td>
-                                                        <td><button class="btn btn-outline-warning">تعديل</button></td>
-                                                        <td><button class="btn btn-danger">حذف</button></td>
-                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
@@ -805,11 +798,17 @@
                             <div class="renew-letter-bill sell-bill-cont mt-4">
                                 <div class="container-fluid">
                                     <div class="row bill-header">
-
+                                        <form id="renewForm">
+                                            @csrf
                                         <div class="col-12 text-center main-title font-weight-bold">
                                             <span>خطاب بالموافقة على تجديد الترخيص </span>
                                             <br>
-                                            <span>مسلسل رقم</span><input type="number" class="serialNum"/>
+                                            <span>مسلسل رقم</span>
+                                            <select name="" id="renewSellbillId" class="taxSerialInp" onchange="renewSellbill()">
+                                                @foreach ($sellbills as $sellbill )
+                                                    <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
 
 
@@ -818,7 +817,7 @@
                                             <div class=".sell-bill-cont">
                                                 <div class="col-12  font-weight-bold mb-4 traff-manager-title">
                                                     <span>السيد اللواء مدير إدارة مرور/</span>
-                                                    <input id="trafficManger" type="text" class="traff-input" placeholder="ادخل اسم المرور">
+                                                    <input id="renewTrafficManger" type="text" class="traff-input" placeholder="ادخل اسم المرور" readonly>
                                                     <br>
                                                 </div>
 
@@ -833,89 +832,84 @@
 
                                                 <div class="form-input-container">
                                                     <div>
-                                                        <span>لوحات رقم /</span> <input type="text" name="" id="">
+                                                        <span>لوحات رقم /</span> <input type="text" name="" id="renewCarNumber" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>النوع /</span> <input type="text" name="" id="" disabled>
+                                                        <span>النوع /</span> <input type="text" name="" id="renewType" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>ماركة  /</span> <input type="text" name="" id="" disabled>
+                                                        <span>ماركة  /</span> <input type="text" name="" id="renewBrand" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>موديل /</span> <input type="text" name="" id="" disabled>
+                                                        <span>موديل /</span> <input type="text" name="" id="renewModel" readonly>
                                                     </div>
 
                                                     <div>
                                                         <span>شاسية رقم /</span>
-                                                        <select id="renewList1">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                        </select>
+                                                        <input type="text" name="" id="renewChase" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>موتور رقم /</span> <input type="text" name="" id="" disabled>
+                                                        <span>موتور رقم /</span> <input type="text" name="" id="renewMotor" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>السعة اللترية  /</span> <input type="text" name="" id="">
+                                                        <span>السعة اللترية  /</span> <input type="text" name="" id="renewLiters" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>نوع الوقود /</span> <input type="text" name="" id="">
+                                                        <span>نوع الوقود /</span> <input type="text" name="" id="renewFuel" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span> الشكل /</span> <input type="text" name="" id="">
+                                                        <span> الشكل /</span> <input type="text" name="" id="renewShape" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>اللون  /</span> <input type="text" name="" id="">
+                                                        <span>اللون  /</span> <input type="text" name="" id="renewColor" readonly>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-input-container-2">
                                                     <div>
-                                                        <span>عدد الركاب/  </span> <input type="text" name="" id="">
+                                                        <span>عدد الركاب/  </span> <input type="text" name="" id="renewPassengerNum" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الوزن/   </span> <input type="text" name="" id="">
+                                                        <span>الوزن/   </span> <input type="text" name="" id="renewWeight" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الحمولة/  </span> <input type="text" name="" id="">
+                                                        <span>الحمولة/  </span> <input type="text" name="" id="renewLoad" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="nameBoxContainer">
                                                     <div>
                                                         <span>اسم المشترى/  </span>
-                                                        <select id="renewList2">
-                                                            <option>1</option>
-                                                            <option>2</option>
-                                                        </select>
+                                                        <input type="text" name="" id="renewClient" readonly>
+                                                        <input type="hidden" name="" id="renewClientId" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="clientForm">
                                                     <div>
-                                                        <span>العنوان/ </span> <input type="text" name="" id="" disabled>
+                                                        <span>العنوان/ </span> <input type="text" name="" id="renewAddress" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الرقم قومى/ </span> <input type="text" name="" id="" disabled>
+                                                        <span>الرقم قومى/ </span> <input type="text" name="" id="renewId" readonly>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="comericalRecord">
                                                     <div>
-                                                        <span>سجل تجارى رقم   /</span> <input id="" type="text" />
+                                                        <span>سجل تجارى رقم   /</span> <input id="renewComericalRecord" type="text"  readonly/>
                                                     </div>
                                                 </div>
 
@@ -928,7 +922,7 @@
 
                                                 <div class="dateSign">
                                                     <div class="col-12 bill-footer1 billDate">
-                                                        <span>تحرير فى <input type="date" id="" class="mDate" placeholder="dd-mm-yyyy" /></span>
+                                                        <span>تحرير فى <input type="date" id="renewDate" class="mDate" placeholder="dd-mm-yyyy" /></span>
                                                     </div>
 
                                                     <div class="col-12 bill-footer2 text-left">
@@ -944,10 +938,10 @@
                                             <br>
 
                                             <div class="col-12 text-center mt-5 ">
-                                                <button class="btn btn-outline-success add_new save-renew-btn">حفظ</button>
+                                                <button type="submit" class="btn btn-outline-success add_new save-renew-btn">حفظ</button>
                                             </div>
                                         </div>
-
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -984,38 +978,33 @@
                                                 </thead>
 
                                                 <tbody>
+                                                    @foreach ($finishbills as $index => $finishbill )
                                                     <tr>
-                                                        <td>1</td>
-                                                        <td>000235</td>
-                                                        <td>جورج استيفن</td>
-                                                        <td>سيارة</td>
-                                                        <td>تويوتا</td>
-                                                        <td>55865</td>
-                                                        <td>74421</td>
-                                                        <td>25/10/2021</td>
-                                                        <td><button class="btn btn-outline-warning">تعديل</button></td>
+                                                        <td>{{ $index + 1 }}</td>
+                                                        <td>{{ $finishbill->sellbillId }}</td>
+                                                        <td>{{ $finishbill->client() }}</td>
+                                                        <td>{{ $finishbill->type }}</td>
+                                                        <td>{{ $finishbill->brand }}</td>
+                                                        <td>{{ $finishbill->chase }}</td>
+                                                        <td>{{ $finishbill->motor }}</td>
+                                                        <td>{{ $finishbill->date }}</td>
+                                                        <td><a href="{{ route('edit.finish',$finishbill->id) }}" class="btn btn-outline-warning">تعديل</a></td>
+                                                        <form action="{{ route('delete.finish',$finishbill->id) }}" method="POST">
+                                                            @csrf
                                                         <td><button class="btn btn-danger">حذف</button></td>
+                                                        </form>
                                                     </tr>
+                                                    @endforeach
 
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td>000246</td>
-                                                        <td>مايكل مرقص</td>
-                                                        <td>موتوسيكل</td>
-                                                        <td>بوكسر 150</td>
-                                                        <td>112563</td>
-                                                        <td>58664</td>
-                                                        <td>25/12/2022</td>
-                                                        <td><button class="btn btn-outline-warning">تعديل</button></td>
-                                                        <td><button class="btn btn-danger">حذف</button></td>
-                                                    </tr>
+
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
+                            <form id="finishBillForm">
+                                @csrf
                             <div class="finish-letter-bill sell-bill-cont mt-4">
                                 <div class="container-fluid">
                                     <div class="row bill-header">
@@ -1023,93 +1012,100 @@
                                         <div class="col-12 text-center main-title font-weight-bold">
                                             <span>مخالصة نهائية</span>
                                             <br>
-                                            <span>مسلسل رقم</span><input type="number" class="serialNum"/>
+                                            <span>مسلسل رقم</span>
+                                            <select name="" id="finishBillList" onchange="finishSellbill()">
+                                                @foreach ($sellbills as $sellbill )
+                                                    <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>
+                                                @endforeach
+
+                                            </select>
                                         </div>
 
 
                                         <div class="row">
                                             <div class="letter-container">
-                                                <p id="traffic-name">السيد اللواء مدير إدارة مرور/ <input type="text" name="" id=""></p>
+                                                <p id="traffic-name">السيد اللواء مدير إدارة مرور/ <input type="text" name="" id="finishTrafficManger" readonly></p>
                                                 <p class="text-center greeting"> تحية طيبة وبعد ،،</p>
                                                 <p class="letter-heading lead font-font-weight-bold">نتشرف بإننا نوافق تخالصنا مع مالك السيارة حيث تم سداد جميع المستحقات التى عليها</p>
 
                                                 <div class="form-input-container">
                                                     <div>
-                                                        <span>لوحات رقم /</span> <input type="text" name="" id="">
+                                                        <span>لوحات رقم /</span> <input type="text" name="" id="finishCarNumber" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>النوع /</span> <input type="text" name="" id="">
+                                                        <span>النوع /</span> <input type="text" name="" id="finishType" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>ماركة  /</span> <input type="text" name="" id="">
+                                                        <span>ماركة  /</span> <input type="text" name="" id="finishBrand" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>موديل /</span> <input type="text" name="" id="">
+                                                        <span>موديل /</span> <input type="text" name="" id="finishModel" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>شاسية رقم /</span> <input type="text" name="" id="">
+                                                        <span>شاسية رقم /</span> <input type="text" name="" id="finishChase" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>موتور رقم /</span> <input type="text" name="" id="">
+                                                        <span>موتور رقم /</span> <input type="text" name="" id="finishMotor" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>السعة اللترية  /</span> <input type="text" name="" id="">
+                                                        <span>السعة اللترية  /</span> <input type="text" name="" id="finishLiters" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>نوع الوقود /</span> <input type="text" name="" id="">
+                                                        <span>نوع الوقود /</span> <input type="text" name="" id="finishFuel" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span> الشكل /</span> <input type="text" name="" id="">
+                                                        <span> الشكل /</span> <input type="text" name="" id="finishShape" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>اللون  /</span> <input type="text" name="" id="">
+                                                        <span>اللون  /</span> <input type="text" name="" id="finishColor" readonly>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="form-input-container-2">
                                                     <div>
-                                                        <span>عدد الركاب/  </span> <input type="text" name="" id="">
+                                                        <span>عدد الركاب/  </span> <input type="text" name="" id="finishPassengerNum" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الوزن/   </span> <input type="text" name="" id="">
+                                                        <span>الوزن/   </span> <input type="text" name="" id="finishWeight" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الحمولة/  </span> <input type="text" name="" id="">
+                                                        <span>الحمولة/  </span> <input type="text" name="" id="finishLoad" readonly>
                                                     </div>
                                                 </div>
 
                                                 <div class="nameBoxContainer">
                                                     <div>
-                                                        <span>اسم المشترى/  </span> <input type="text" name="" id="">
+                                                        <span>اسم المشترى/  </span> <input type="text" name="" id="finishClient" readonly>
+                                                        <input type="hidden" name="" id="finishClientId">
                                                     </div>
                                                 </div>
 
                                                 <div class="clientForm">
                                                     <div>
-                                                        <span>العنوان/ </span> <input type="text" name="" id="">
+                                                        <span>العنوان/ </span> <input type="text" name="" id="finishAddress" readonly>
                                                     </div>
 
                                                     <div>
-                                                        <span>الرقم قومى/ </span> <input type="text" name="" id="">
+                                                        <span>الرقم قومى/ </span> <input type="text" name="" id="finishId" readonly>
                                                     </div>
 
                                                 </div>
 
                                                 <div class="comericalRecord">
                                                     <div>
-                                                        <span>سجل تجارى رقم   /</span> <input id="" type="text" />
+                                                        <span>سجل تجارى رقم   /</span> <input id="finishComericalRecord" type="text" readonly />
                                                     </div>
                                                 </div>
 
@@ -1118,7 +1114,7 @@
 
                                                 <div class="dateSign">
                                                     <div class="col-12 bill-footer1 billDate">
-                                                        <span>تحرير فى <input type="date" id="" class="mDate" placeholder="dd-mm-yyyy" /></span>
+                                                        <span>تحرير فى <input type="date" id="finishDate" class="mDate" placeholder="dd-mm-yyyy"  readonly/></span>
                                                     </div>
 
                                                     <div class="col-12 bill-footer2 text-left">
@@ -1135,7 +1131,7 @@
                                                 </div>
                                             </div>
                                         </div>
-
+                                    </form>
                                     </div>
                                 </div>
                             </div>
@@ -1979,7 +1975,7 @@
                                     <p class="taxBillTitle">فاتورة بيع</p>
                                     <p class="taxBillSerialCont">
                                         <select id="taxBillBycId"  class="taxSerialInp" onchange="getSellBillBycInfo()" style="width: 100% !important; text-align:center !important" >
-                                            @foreach ($sellbillByc as$sellbill )
+                                            @foreach ($sellbillByc as $sellbill )
                                                 <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>
                                             @endforeach
                                         </select>
@@ -2139,10 +2135,10 @@
                                                     <span>التـاريــخ: </span><input id="taxBillCarDate" type="date"  />
                                                 </li>
                                                 <li>
-                                                    <span>المطلوب من السيد: </span><input id="taxBillCarName" type="text" />
+                                                    <span>المطلوب من السيد: </span><input id="taxBillCarName" type="text" readonly />
                                                 </li>
                                                 <li>
-                                                    <span>العنوان: </span><input id="taxBillCarAddress" type="text" />
+                                                    <span>العنوان: </span><input id="taxBillCarAddress" type="text"  readonly/>
                                                 </li>
                                             </ul>
                                         </div>
@@ -2151,7 +2147,7 @@
                                             <table class="table table-bordered">
                                                 <thead>
                                                     <th>القيمة </th>
-                                                    <th>الشاسية</th>
+                                                    <th>الشاسيـة</th>
                                                     <th>الماتور</th>
                                                     <th>البيـــــــان</th>
                                                 </thead>
@@ -2161,14 +2157,14 @@
                                                             <input id="taxBillCarTotalPrice" type="text" />
                                                         </td>
                                                         <td>
-                                                            <input id="taxBillCarChase" type="text" />
+                                                            <input id="taxBillCarChase" type="text" readonly />
                                                         </td>
                                                         <td>
-                                                            <input id="taxBillCarMotor" type="text" />
+                                                            <input id="taxBillCarMotor" type="text"  readonly/>
                                                         </td>
                                                         <td>
-                                                            <input type="text"  id="taxBillCarBrand">
-                                                            <input type="text"  id="taxBillCarModel">
+                                                            <input type="text"  id="taxBillCarBrand" readonly />
+                                                            <input type="text"  id="taxBillCarModel" readonly />
 
                                                         </td>
                                                     </tr>
@@ -2195,7 +2191,7 @@
                                                             <input id="taxBillCarBillTotal" type="text"/>
                                                         </td>
                                                         <td colspan="3">
-                                                            <textarea></textarea>
+                                                            <textarea readonly></textarea>
                                                         </td>
                                                     </tr>
                                                 </tbody>
@@ -3035,7 +3031,9 @@
    $('#taxBillBycAddedMoney').keyup(function(){
        let price = Number($('#taxBillBycPrice').val());
        let added = Number($('#taxBillBycAddedMoney').val());
-    $('#taxBillBycBillTotal').val( price + added) ;
+       let totalByc = price + added;
+       let roundedByc = Math.round(totalByc*100)/100;
+    $('#taxBillBycBillTotal').val(roundedByc) ;
    });
 
    $('#taxBillCarInsuranceFee').keyup(function(){
@@ -3044,8 +3042,9 @@
        let developfee = Number($('#taxBillCarDevelopFee').val());
        let insurance = Number($('#taxBillCarInsurance').val());
        let insurancefee = Number($('#taxBillCarInsuranceFee').val());
-
-        $('#taxBillCarBillTotal').val( price + added + developfee + insurance + insurancefee ) ;
+       let totalCar = price + added + developfee + insurance + insurancefee;
+       let roundedCar = Math.round(totalCar*100)/100;
+        $('#taxBillCarBillTotal').val( roundedCar ) ;
    })
 </script>
 
@@ -3094,5 +3093,239 @@
 
 
 </script>
+
+{{-- Re New Get INFO --}}
+<script>
+    $('#renewSellbillId').select2();
+
+
+    function renewSellbill()
+    {
+        let id = $('#renewSellbillId').val();
+        console.log(id);
+        $.get('/renew/getinfo/'+id,function(sellbill){
+            $('#renewTrafficManger').val(sellbill.trafficManger);
+            $('#renewCarNumber').val(sellbill.carNumber);
+            $('#renewType').val(sellbill.type);
+            $('#renewBrand').val(sellbill.brand);
+            $('#renewModel').val(sellbill.model);
+            $('#renewChase').val(sellbill.chase);
+            $('#renewMotor').val(sellbill.motor);
+            $('#renewLiters').val(sellbill.liters);
+            $('#renewFuel').val(sellbill.fuel);
+            $('#renewShape').val(sellbill.shape);
+            $('#renewColor').val(sellbill.color);
+            $('#renewPassengerNum').val(sellbill.passengerNum);
+            $('#renewWeight').val(sellbill.weight);
+            $('#renewLoad').val(sellbill.load);
+            $('#renewClient').val(sellbill.client_id);
+            $('#renewAddress').val(sellbill.address);
+            $('#renewId').val(sellbill.idNumber);
+            $('#renewComericalRecord').val(sellbill.comericalRecord);
+            $('#renewDate').val(sellbill.date);
+            $('#renewClientId').val(sellbill.installments)
+        });
+    }
+</script>
+
+{{-- Store Renew Bill --}}
+<script >
+        $("#renewForm").submit(function(e)
+   {
+       e.preventDefault();
+       let sellbillId = $("#renewSellbillId").val()
+       let trafficManger =$("#renewTrafficManger").val();
+       let type = $("#renewType").val();
+       let carNumber = $("#renewCarNumber").val();
+       let brand = $("#renewBrand").val();
+       let model = $("#renewModel").val();
+       let chase = $("#renewChase").val();
+       let motor = $("#renewMotor").val();
+       let liters = $("#renewLiters").val();
+       let color = $("#renewColor").val();
+       let shape = $("#renewShape").val();
+       let passengerNum = $("#renewPassengerNum").val();
+       let weight = $("#renewWeight").val();
+       let load = $("#renewLoad").val();
+       let fuel = $("#renewFuel").val();
+       let client_id = $("#renewClientId").val();
+       let address = $("#renewAddress").val();
+       let idNumber = $("#renewId").val();
+       let comericalRecord = $("#renewComericalRecord").val();
+    //    let installments = $("#installments").val();
+       let date = $("#renewDate").val();
+       let _token = $("input[name=_token]").val();
+
+       $.ajax({
+           url:"{{ route('store.renew') }}",
+           type:'POST',
+           data:{
+                sellbillId:sellbillId,
+               trafficManger:trafficManger,
+               type:type,
+               carNumber:carNumber,
+               brand:brand,
+               model:model,
+               chase:chase,
+               motor:motor,
+               liters:liters,
+               color:color,
+               shape:shape,
+               passengerNum:passengerNum,
+               weight:weight,
+               load:load,
+               fuel:fuel,
+               client_id:client_id,
+               address:address,
+               idNumber:idNumber,
+               comericalRecord:comericalRecord,
+               date:date,
+               _token:_token,
+           },
+           success:function(response)
+           {
+               alert('تم اضافه خطاب تجديد');
+               location.reload();
+           },
+           error:function(error)
+           {
+               console.log(error);
+               alert('خطأ في البيانات')
+               $("#sellbillCarNumberError").text(error.responseJSON.errors.dealer_id);
+               $("#sellbillLitersError").text(error.responseJSON.errors.type);
+               $("#sellbillFuelError").text(error.responseJSON.errors.date);
+               $("#sellbillAddressError").text(error.responseJSON.errors.driver);
+               $("#sellbillTaxRegNumberError").text(error.responseJSON.errors.driver);
+               $("#sellbillInstallmentsError").text(error.responseJSON.errors.driver);
+               $("#sellbillTaxError").text(error.responseJSON.errors.driver);
+               $("#sellbillOriginalPriceError").text(error.responseJSON.errors.driver);
+               $("#sellbillInstallmentTaxError").text(error.responseJSON.errors.driver);
+               $("#sellbillTotalPriceError").text(error.responseJSON.errors.driver);
+               $("#sellbillDateError").text(error.responseJSON.errors.driver);
+
+           }
+       });
+
+
+   });
+</script>
+
+{{-- Get Finish Bill Info --}}
+
+<script>
+    $('#finishBillList').select2();
+
+    function finishSellbill()
+    {
+        let id = $('#finishBillList').val();
+        console.log(id);
+        $.get('/renew/getinfo/'+id,function(sellbill){
+            $('#finishTrafficManger').val(sellbill.trafficManger);
+            $('#finishCarNumber').val(sellbill.carNumber);
+            $('#finishType').val(sellbill.type);
+            $('#finishBrand').val(sellbill.brand);
+            $('#finishModel').val(sellbill.model);
+            $('#finishChase').val(sellbill.chase);
+            $('#finishMotor').val(sellbill.motor);
+            $('#finishLiters').val(sellbill.liters);
+            $('#finishFuel').val(sellbill.fuel);
+            $('#finishShape').val(sellbill.shape);
+            $('#finishColor').val(sellbill.color);
+            $('#finishPassengerNum').val(sellbill.passengerNum);
+            $('#finishWeight').val(sellbill.weight);
+            $('#finishLoad').val(sellbill.load);
+            $('#finishClient').val(sellbill.client_id);
+            $('#finishAddress').val(sellbill.address);
+            $('#finishId').val(sellbill.idNumber);
+            $('#finishComericalRecord').val(sellbill.comericalRecord);
+            $('#finishDate').val(sellbill.date);
+            $('#finishClientId').val(sellbill.installments)
+        });
+    }
+</script>
+
+{{-- Store Finish Bill --}}
+
+<script>
+        $("#finishBillForm").submit(function(e)
+    {
+    e.preventDefault();
+    let sellbillId = $("#finishBillList").val()
+    let trafficManger =$("#finishTrafficManger").val();
+    let type = $("#finishType").val();
+    let carNumber = $("#finishCarNumber").val();
+    let brand = $("#finishBrand").val();
+    let model = $("#finishModel").val();
+    let chase = $("#finishChase").val();
+    let motor = $("#finishMotor").val();
+    let liters = $("#finishLiters").val();
+    let color = $("#finishColor").val();
+    let shape = $("#finishShape").val();
+    let passengerNum = $("#finishPassengerNum").val();
+    let weight = $("#finishWeight").val();
+    let load = $("#finishLoad").val();
+    let fuel = $("#finishFuel").val();
+    let client_id = $("#finishClientId").val();
+    let address = $("#finishAddress").val();
+    let idNumber = $("#finishId").val();
+    let comericalRecord = $("#finishComericalRecord").val();
+    // let installments = $("#installments").val();
+    let date = $("#finishDate").val();
+    let _token = $("input[name=_token]").val();
+
+    $.ajax({
+        url:"{{ route('store.finish') }}",
+        type:'POST',
+        data:{
+                sellbillId:sellbillId,
+            trafficManger:trafficManger,
+            type:type,
+            carNumber:carNumber,
+            brand:brand,
+            model:model,
+            chase:chase,
+            motor:motor,
+            liters:liters,
+            color:color,
+            shape:shape,
+            passengerNum:passengerNum,
+            weight:weight,
+            load:load,
+            fuel:fuel,
+            client_id:client_id,
+            address:address,
+            idNumber:idNumber,
+            comericalRecord:comericalRecord,
+            date:date,
+            _token:_token,
+        },
+        success:function(response)
+        {
+            alert('تم اضافه مخالصه');
+            location.reload();
+        },
+        error:function(error)
+        {
+            console.log(error);
+            alert('خطأ في البيانات')
+            $("#sellbillCarNumberError").text(error.responseJSON.errors.dealer_id);
+            $("#sellbillLitersError").text(error.responseJSON.errors.type);
+            $("#sellbillFuelError").text(error.responseJSON.errors.date);
+            $("#sellbillAddressError").text(error.responseJSON.errors.driver);
+            $("#sellbillTaxRegNumberError").text(error.responseJSON.errors.driver);
+            $("#sellbillInstallmentsError").text(error.responseJSON.errors.driver);
+            $("#sellbillTaxError").text(error.responseJSON.errors.driver);
+            $("#sellbillOriginalPriceError").text(error.responseJSON.errors.driver);
+            $("#sellbillInstallmentTaxError").text(error.responseJSON.errors.driver);
+            $("#sellbillTotalPriceError").text(error.responseJSON.errors.driver);
+            $("#sellbillDateError").text(error.responseJSON.errors.driver);
+
+        }
+    });
+
+
+    });
+</script>
+
 </body>
 </html>

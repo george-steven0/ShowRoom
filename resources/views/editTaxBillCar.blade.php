@@ -28,11 +28,11 @@
                         <option selected value="{{ $taxbill->sellBillId }}">{{ $taxbill->sellBillId }}</option>
                         @foreach($sellbills as $sellbill)
                         @if($sellbill->id == $taxbill->sellBillId)
-                        @continue 
+                        @continue
                         @endif
-                            <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>    
+                            <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>
                         @endforeach
-                        
+
                     </select>
                 </p>
             </div>
@@ -43,10 +43,10 @@
                         <span>التـاريــخ: </span><input name="date" id="taxBillCarDate" value="{{ $taxbill->date }}" type="date"  />
                     </li>
                     <li>
-                        <span>المطلوب من السيد: </span><input name="clientName" id="taxBillCarName" value="{{ $taxbill->clientName }}" type="text" />
+                        <span>المطلوب من السيد: </span><input name="clientName" id="taxBillCarName" value="{{ $taxbill->clientName }}" type="text"  readonly/>
                     </li>
                     <li>
-                        <span>العنوان: </span><input name="address" id="taxBillCarAddress" value="{{ $taxbill->address }}" type="text" />
+                        <span>العنوان: </span><input name="address" id="taxBillCarAddress" value="{{ $taxbill->address }}" type="text" readonly/>
                     </li>
                 </ul>
             </div>
@@ -62,28 +62,28 @@
                     <tbody>
                         <tr class="carPriceTax">
                             <td>
-                                <input name="totalPrice" id="taxBillCarTotalPrice" value="{{ $taxbill->totalPrice }}" type="number" />
+                                <input name="totalPrice" id="taxBillCarTotalPrice" value="{{ $taxbill->totalPrice }}" type="number" step="any" />
                             </td>
                             <td>
-                                <input name="chase" id="taxBillCarChase" value="{{ $taxbill->chase }}" type="text" />
+                                <input name="chase" id="taxBillCarChase" value="{{ $taxbill->chase }}" type="text" readonly />
                             </td>
                             <td>
-                                <input name="motor" id="taxBillCarMotor" value="{{ $taxbill->motor }}" type="text" />
+                                <input name="motor" id="taxBillCarMotor" value="{{ $taxbill->motor }}" type="text" readonly />
                             </td>
                             <td>
-                                <input name="brand" type="text" value="{{ $taxbill->brand }}"  id="taxBillCarBrand">
-                                <input name="model" type="text" value="{{ $taxbill->model }}" id="taxBillCarModel">
+                                <input name="brand" type="text" value="{{ $taxbill->brand }}"  id="taxBillCarBrand" readonly/>
+                                <input name="model" type="text" value="{{ $taxbill->model }}" id="taxBillCarModel" readonly />
 
                             </td>
                         </tr>
 
                         <tr class="carPriceTaxTitle">
                             <td>
-                                <input name="carPrice" id="taxBillCarCarPrice" value="{{ $taxbill->carPrice }}" type="number" />
-                                <input name="addedMoney" id="taxBillCarAddedMoney" value="{{ $taxbill->addedMoney }}" type="number" />
-                                <input name="developFee" id="taxBillCarDevelopFee" value="{{ $taxbill->developFee }}" type="number" />
-                                <input name="insurance" id="taxBillCarInsurance" value="{{ $taxbill->insurance }}" type="number" />
-                                <input name="insuranceFee" id="taxBillCarInsuranceFee" value="{{ $taxbill->insuranceFee }}" type="number" />
+                                <input name="carPrice" id="taxBillCarCarPrice" value="{{ $taxbill->carPrice }}" type="number" step="any" />
+                                <input name="addedMoney" id="taxBillCarAddedMoney" value="{{ $taxbill->addedMoney }}" type="number" step="any" />
+                                <input name="developFee" id="taxBillCarDevelopFee" value="{{ $taxbill->developFee }}" type="number"  step="any"/>
+                                <input name="insurance" id="taxBillCarInsurance" value="{{ $taxbill->insurance }}" type="number" step="any" />
+                                <input name="insuranceFee" id="taxBillCarInsuranceFee" value="{{ $taxbill->insuranceFee }}" type="number" step="any" />
                             </td>
                             <td colspan="3">
                                 <span>سعر السيارة</span>
@@ -96,10 +96,10 @@
 
                         <tr class="taxBillFinallPrice">
                             <td>
-                                <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillCarBillTotal" type="text"/>
+                                <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillCarBillTotal" type="text" step="any" readonly/>
                             </td>
                             <td colspan="3">
-                                <textarea></textarea>
+                                <textarea readonly></textarea>
                             </td>
                         </tr>
                     </tbody>
@@ -140,8 +140,10 @@
        let developfee = Number($('#taxBillCarDevelopFee').val());
        let insurance = Number($('#taxBillCarInsurance').val());
        let insurancefee = Number($('#taxBillCarInsuranceFee').val());
+       let totalCar = price + added + developfee + insurance + insurancefee;
+       let roundedCar = Math.round(totalCar*100)/100;
 
-        $('#taxBillCarBillTotal').val( price + added + developfee + insurance + insurancefee ) ;
+        $('#taxBillCarBillTotal').val(roundedCar) ;
    })
 
    function getSellBillCarInfo()

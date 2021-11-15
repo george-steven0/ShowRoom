@@ -3,11 +3,13 @@
 use App\Models\BuyBill;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DataController;
+use App\Http\Controllers\ReNewController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\DealerController;
 use App\Http\Controllers\BuyBillController;
-use App\Http\Controllers\SellBillController;
 use App\Http\Controllers\TaxBillController;
+use App\Http\Controllers\SellBillController;
+use App\Http\Controllers\FinishBillController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +74,20 @@ Route::POST('/update/taxbillbyc/{id}',[TaxBillController::class,'updateByc'])->n
 Route::POST('/update/taxbillcar/{id}',[TaxBillController::class,'updateCar'])->name('update.taxBillCar');
 
 
+
+//Renew Routes
+Route::GET('/renew/getinfo/{id}',[ReNewController::class,'getInfo']);
+Route::POST('/store/renew',[ReNewController::class,'store'])->name('store.renew');
+Route::GET('/edit/renew/{id}',[RenewController::class,'editRenew'])->name('edit.renew');
+Route::POST('/update/renew/{id}',[RenewController::class,'update'])->name('update.renew');
+Route::POST('/delete/renew/{id}',[RenewController::class,'destroy'])->name('delete.renew');
+
+
+//Finish Route
+Route::POST('/store/finish',[FinishBillController::class,'store'])->name('store.finish');
+Route::GET('/edit/finish/{id}',[FinishBillController::class,'edit'])->name('edit.finish');
+Route::POST('/update/finish/{id}',[FinishBillController::class,'update'])->name('update.finish');
+Route::POST('/delete/finish/{id}',[FinishBillController::class,'destroy'])->name('delete.finish');
 
 
 Route::GET('/downloadPdf/{sellbill}',[DataController::class,'downloadPdf'])->name('downloadPdf');

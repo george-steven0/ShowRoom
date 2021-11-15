@@ -31,13 +31,13 @@
             <div class="billDetails">
                 <ul>
                     <li>
-                        <span>التـاريــخ: </span><input id="taxBillCarDate" value="{{ $taxbill->date }}" type="date"  />
+                        <span>التـاريــخ: </span><input id="taxBillCarDate" value="{{ $taxbill->date }}" type="date"  readonly />
                     </li>
                     <li>
-                        <span>المطلوب من السيد: </span><input id="taxBillCarName" value="{{ $taxbill->clientName }}" type="text" />
+                        <span>المطلوب من السيد: </span><input id="taxBillCarName" value="{{ $taxbill->clientName }}" type="text" readonly />
                     </li>
                     <li>
-                        <span>العنوان: </span><input id="taxBillCarAddress" value="{{ $taxbill->address }}" type="text" />
+                        <span>العنوان: </span><input id="taxBillCarAddress" value="{{ $taxbill->address }}" type="text" readonly />
                     </li>
                 </ul>
             </div>
@@ -53,28 +53,28 @@
                     <tbody>
                         <tr class="carPriceTax">
                             <td>
-                                <input id="taxBillCarTotalPrice" value="{{ $taxbill->totalPrice }}" type="number" />
+                                <input id="taxBillCarTotalPrice" value="{{ $taxbill->totalPrice }}" type="number" readonly/>
                             </td>
                             <td>
-                                <input id="taxBillCarChase" value="{{ $taxbill->chase }}" type="text" />
+                                <input id="taxBillCarChase" value="{{ $taxbill->chase }}" type="text" readonly/>
                             </td>
                             <td>
-                                <input id="taxBillCarMotor" value="{{ $taxbill->motor }}" type="text" />
+                                <input id="taxBillCarMotor" value="{{ $taxbill->motor }}" type="text" readonly/>
                             </td>
                             <td>
-                                <input type="text" value="{{ $taxbill->brand }}"  id="taxBillCarBrand">
-                                <input type="text" value="{{ $taxbill->model }}" id="taxBillCarModel">
+                                <input type="text" value="{{ $taxbill->brand }}"  id="taxBillCarBrand" readonly/>
+                                <input type="text" value="{{ $taxbill->model }}" id="taxBillCarModel" readonly/>
 
                             </td>
                         </tr>
 
                         <tr class="carPriceTaxTitle">
                             <td>
-                                <input id="taxBillCarCarPrice" value="{{ $taxbill->carPrice }}" type="number" />
-                                <input id="taxBillCarAddedMoney" value="{{ $taxbill->addedMoney }}" type="number" />
-                                <input id="taxBillCarDevelopFee" value="{{ $taxbill->developFee }}" type="number" />
-                                <input id="taxBillCarInsurance" value="{{ $taxbill->insurance }}" type="number" />
-                                <input id="taxBillCarInsuranceFee" value="{{ $taxbill->insuranceFee }}" type="number" />
+                                <input id="taxBillCarCarPrice" value="{{ $taxbill->carPrice }}" type="number" readonly/>
+                                <input id="taxBillCarAddedMoney" value="{{ $taxbill->addedMoney }}" type="number" readonly/>
+                                <input id="taxBillCarDevelopFee" value="{{ $taxbill->developFee }}" type="number" readonly/>
+                                <input id="taxBillCarInsurance" value="{{ $taxbill->insurance }}" type="number" readonly/>
+                                <input id="taxBillCarInsuranceFee" value="{{ $taxbill->insuranceFee }}" type="number" readonly/>
                             </td>
                             <td colspan="3">
                                 <span>سعر السيارة</span>
@@ -87,10 +87,10 @@
 
                         <tr class="taxBillFinallPrice">
                             <td>
-                                <input value="{{ $taxbill->billTotal }}" id="taxBillCarBillTotal" type="text"/>
+                                <input value="{{ $taxbill->billTotal }}" id="taxBillCarBillTotal" type="text" readonly/>
                             </td>
                             <td colspan="3">
-                                <textarea>{{ $tr }}</textarea>
+                                <textarea readonly>{{ $tr }}</textarea>
                             </td>
                         </tr>
                     </tbody>

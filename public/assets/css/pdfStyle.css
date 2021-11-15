@@ -86,7 +86,7 @@
 #traffic-name > input{
     width: 70% !important;
 }
-.tax-bill,.tax-billCar{
+.tax-bill,.tax-billCar,.renew-letter-bill,.finish-letter-bill{
     display: block !important;
     direction: rtl;
     padding: 10px 65px;

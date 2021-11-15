@@ -32,13 +32,13 @@
                 <div class="billDetails">
                     <ul>
                         <li>
-                            <span>التـاريــخ: </span><input name="date" value="{{ $taxbill->date }}" id="taxBillBycDate" type="date"  />
+                            <span>التـاريــخ: </span><input name="date" value="{{ $taxbill->date }}" id="taxBillBycDate" type="date"  readonly/>
                         </li>
                         <li>
-                            <span>المطلوب من السيد: </span><input name="clientName" value="{{ $taxbill->clientName }}" id="taxBillBycName" type="text" />
+                            <span>المطلوب من السيد: </span><input name="clientName" value="{{ $taxbill->clientName }}" id="taxBillBycName" type="text" readonly/>
                         </li>
                         <li>
-                            <span>العنوان: </span><input name="address" value="{{ $taxbill->address }}" id="taxBillBycAddress" type="text" />
+                            <span>العنوان: </span><input name="address" value="{{ $taxbill->address }}" id="taxBillBycAddress" type="text" readonly/>
                         </li>
                     </ul>
                 </div>
@@ -54,28 +54,28 @@
                         <tbody>
                             <tr class="carPriceTax">
                                 <td>
-                                    <input name="totalPrice" value="{{ $taxbill->totalPrice }}" id="taxBillBycTotalPrice" type="text" />
+                                    <input name="totalPrice" value="{{ $taxbill->totalPrice }}" id="taxBillBycTotalPrice" type="text" readonly/>
                                 </td>
                                 <td>
-                                    <input name="count" value="{{ $taxbill->count }}" id="taxBillBycCount" type="number" />
+                                    <input name="count" value="{{ $taxbill->count }}" id="taxBillBycCount" type="number" readonly/>
                                 </td>
                                 <td>
-                                    <input name="carPrice" value="{{ $taxbill->carPrice }}" id="taxBillBycCarPrice" type="number" />
+                                    <input name="carPrice" value="{{ $taxbill->carPrice }}" id="taxBillBycCarPrice" type="number" readonly/>
                                 </td>
                                 <td>
-                                    <input name="brand" value="{{ $taxbill->brand }}" type="text"  id="taxBillBycBrand">
-                                    <input name="model" value="{{ $taxbill->model }}" type="text"  id="taxBillBycModel">
+                                    <input name="brand" value="{{ $taxbill->brand }}" type="text"  id="taxBillBycBrand" readonly/>
+                                    <input name="model" value="{{ $taxbill->model }}" type="text"  id="taxBillBycModel" readonly/>
                                     <div class="taxBillTableDisblayChase">
-                                        <label for="">ش/ </label><input name="chase" value="{{ $taxbill->chase }}" type="text"  id="taxBillBycChase"> <br/>
-                                        <label for="">م/ </label><input name="motor" value="{{ $taxbill->motor }}" type="text"  id="taxBillBycMotor">
+                                        <label for="">ش/ </label><input name="chase" value="{{ $taxbill->chase }}" type="text"  id="taxBillBycChase" readonly/> <br/>
+                                        <label for="">م/ </label><input name="motor" value="{{ $taxbill->motor }}" type="text"  id="taxBillBycMotor" readonly/>
                                     </div>
                                 </td>
                             </tr>
 
                             <tr class="carPriceTaxTitle">
                                 <td>
-                                    <input name="price" value="{{ $taxbill->price }}" id="taxBillBycPrice"  type="number" />
-                                    <input name="addedMoney" value="{{ $taxbill->addedMoney }}" id="taxBillBycAddedMoney"  type="number" />
+                                    <input name="price" value="{{ $taxbill->price }}" id="taxBillBycPrice"  type="number" readonly/>
+                                    <input name="addedMoney" value="{{ $taxbill->addedMoney }}" id="taxBillBycAddedMoney"  type="number" readonly/>
                                 </td>
                                 <td colspan="3">
                                     <span>السعر</span>
@@ -85,10 +85,10 @@
 
                             <tr class="taxBillFinallPrice">
                                 <td>
-                                    <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillBycBillTotal" type="number"/>
+                                    <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillBycBillTotal" type="number" readonly/>
                                 </td>
                                 <td colspan="3">
-                                    <textarea>{{ $tr }}</textarea>
+                                    <textarea readonly>{{ $tr }}</textarea>
                                 </td>
                             </tr>
                         </tbody>
@@ -96,12 +96,6 @@
 
                     <div class="taxBillSignture">
                     <span>التوقيع </span><span> .....................................</span>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-outline-success add_new saveTaxbillBtn" >حفظ</button>
                     </div>
                 </div>
 

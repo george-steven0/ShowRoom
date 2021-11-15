@@ -29,9 +29,9 @@
                         @if($sellbill->id == $taxbill->sellBillId)
                         @continue
                         @endif
-                        <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>    
+                        <option value="{{ $sellbill->id }}">{{ $sellbill->id }}</option>
                         @endforeach
-                        
+
                     </select>
                 </p>
             </div>
@@ -67,22 +67,22 @@
                                 <input name="count" value="{{ $taxbill->count }}" id="taxBillBycCount" type="number" />
                             </td>
                             <td>
-                                <input name="carPrice" value="{{ $taxbill->carPrice }}" id="taxBillBycCarPrice" type="number" />
+                                <input name="carPrice" value="{{ $taxbill->carPrice }}" id="taxBillBycCarPrice" type="number" step="any" />
                             </td>
                             <td>
-                                <input name="brand" value="{{ $taxbill->brand }}" type="text"  id="taxBillBycBrand">
-                                <input name="model" value="{{ $taxbill->model }}" type="text"  id="taxBillBycModel">
+                                <input name="brand" value="{{ $taxbill->brand }}" type="text"  id="taxBillBycBrand" readonly/>
+                                <input name="model" value="{{ $taxbill->model }}" type="text"  id="taxBillBycModel" readonly/>
                                 <div class="taxBillTableDisblayChase">
-                                    <label for="">ش/ </label><input name="chase" value="{{ $taxbill->chase }}" type="text"  id="taxBillBycChase"> <br/>
-                                    <label for="">م/ </label><input name="motor" value="{{ $taxbill->motor }}" type="text"  id="taxBillBycMotor">
+                                    <label for="">ش/ </label><input name="chase" value="{{ $taxbill->chase }}" type="text"  id="taxBillBycChase" readonly/> <br/>
+                                    <label for="">م/ </label><input name="motor" value="{{ $taxbill->motor }}" type="text"  id="taxBillBycMotor" readonly/>
                                 </div>
                             </td>
                         </tr>
 
                         <tr class="carPriceTaxTitle">
                             <td>
-                                <input name="price" value="{{ $taxbill->price }}" id="taxBillBycPrice"  type="number" />
-                                <input name="addedMoney" value="{{ $taxbill->addedMoney }}" id="taxBillBycAddedMoney"  type="number" />
+                                <input name="price" value="{{ $taxbill->price }}" id="taxBillBycPrice"  type="number"  step="any"/>
+                                <input name="addedMoney" value="{{ $taxbill->addedMoney }}" id="taxBillBycAddedMoney"  type="number" step="any" />
                             </td>
                             <td colspan="3">
                                 <span>السعر</span>
@@ -92,10 +92,10 @@
 
                         <tr class="taxBillFinallPrice">
                             <td>
-                                <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillBycBillTotal" type="number"/>
+                                <input name="billTotal" value="{{ $taxbill->billTotal }}" id="taxBillBycBillTotal" type="number" step="any" />
                             </td>
                             <td colspan="3">
-                                <textarea></textarea>
+                                <textarea readonly></textarea>
                             </td>
                         </tr>
                     </tbody>
@@ -147,6 +147,8 @@
     $('#taxBillBycAddedMoney').keyup(function(){
        let price = Number($('#taxBillBycPrice').val());
        let added = Number($('#taxBillBycAddedMoney').val());
-    $('#taxBillBycBillTotal').val( price + added) ;
+       let totalByc = price + added;
+       let roundedByc = Math.round(totalByc*100)/100;
+    $('#taxBillBycBillTotal').val( roundedByc) ;
    });
 </script>

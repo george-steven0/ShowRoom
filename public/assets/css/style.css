@@ -510,7 +510,7 @@ div.dataTables_wrapper div.dataTables_info{
     width: 230px;
 }
 .taxBillTable table thead th:nth-child(2){
-    width: 150px;
+    width: 180px;
 }
 .taxBillTable table thead th:nth-child(3){
     width: 250px;

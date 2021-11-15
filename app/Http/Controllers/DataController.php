@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Client;
 use App\Models\Dealer;
 use App\Models\BuyBill;
+use App\Models\FinishBill;
+use App\Models\RenewBill;
 use App\Models\SellBill;
 use App\Models\SellBillByc;
 use App\Models\TaxBillByc;
@@ -20,9 +22,11 @@ class DataController extends Controller
         $clients = Client::all();
         $buybills = BuyBill::all();
         $sellbills = SellBill::all();
+        $renews = RenewBill::all();
         $sellbillsByc = SellBillByc::all();
         $taxbillsCar = TaxBillCar::all();
         $taxbillsByc = TaxBillByc::all();
+        $finishbills = FinishBill::all();
         return view('index',
         [
             'dealers'=>$dealers,
@@ -32,7 +36,9 @@ class DataController extends Controller
             'sellbillCars'=>$sellbills,
             'sellbillByc'=>$sellbillsByc,
             'taxbillsCar'=>$taxbillsCar,
-            'taxbillsByc'=>$taxbillsByc
+            'taxbillsByc'=>$taxbillsByc,
+            'renews'=> $renews,
+            'finishbills'=>$finishbills
         ]);
     }
 

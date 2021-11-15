@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\SellBill;
-use App\Models\SellBillByc;
 use NumberFormatter;
+use App\Models\SellBill;
 use App\Models\TaxBillByc;
 use App\Models\TaxBillCar;
+use App\Models\SellBillByc;
 use Illuminate\Http\Request;
+use AtmCode\ArPhpLaravel\ArPhpLaravel;
 use SujalPatel\IntToEnglish\IntToEnglish;
 use Stichoza\GoogleTranslate\GoogleTranslate;
 
@@ -69,8 +70,7 @@ class TaxBillController extends Controller
     public function showByc($id)
     {
         $taxbill = TaxBillByc::find($id);
-        $word ='Only '. IntToEnglish::Int2Eng($taxbill->billTotal).' Egyptian Pound';
-        $tr = GoogleTranslate::trans($word,'ar'). ' لا غير ';
+        $tr = 'فقط '. ArPhpLaravel::money2str($taxbill->billTotal,'EGP','ar') . ' مصريا';
         return view('showTaxBillByc',
         [
             'taxbill' => $taxbill,
@@ -92,7 +92,7 @@ class TaxBillController extends Controller
     }
 
     public function editCar($id)
-    { 
+    {
         $taxbill = TaxBillCar::find($id);
         $sellbills = SellBill::all();
         return view('editTaxBillCar',
@@ -151,8 +151,7 @@ class TaxBillController extends Controller
     public function showCar($id)
     {
         $taxbill = TaxBillCar::find($id);
-        $word = IntToEnglish::Int2Eng($taxbill->billTotal).' Egyptian Pound';
-        $tr = 'فقط '.GoogleTranslate::trans($word,'ar'). ' لا غير ';
+        $tr = 'فقط '. ArPhpLaravel::money2str($taxbill->billTotal,'EGP','ar') . ' مصريا';
         return view('showTaxBillCar',
         [
             'taxbill' => $taxbill,

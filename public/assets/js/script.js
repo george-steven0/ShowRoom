@@ -78,20 +78,20 @@ $(document).ready(function(){
         $(renewLetterCont).fadeIn(250)
     })
 
-    $(saveRenewbillBtn).on('click',function () {
-        $(displayLetters).fadeIn(250)
-        $(renewLetterCont).fadeOut(200)
-    })
+    // $(saveRenewbillBtn).on('click',function () {
+    //     $(displayLetters).fadeIn(250)
+    //     $(renewLetterCont).fadeOut(200)
+    // })
 
     $(newFinishBtn).on('click',function () {
         $(finishTable).fadeOut(200)
         $(finishLetterBillCont).fadeIn(250)
     })
 
-    $(saveFinishBtn).on('click',function () {
-        $(finishTable).fadeIn(250)
-        $(finishLetterBillCont).fadeOut(200)
-    })
+    // $(saveFinishBtn).on('click',function () {
+    //     $(finishTable).fadeIn(250)
+    //     $(finishLetterBillCont).fadeOut(200)
+    // })
 
     $(viewClientPageBtn).on('click',function () {
         $(clientAccountCont).fadeOut(10)
