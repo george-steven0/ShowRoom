@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FinishBill;
 use App\Models\SellBill;
+use App\Models\SellBillByc;
 use Illuminate\Http\Request;
 
 class FinishBillController extends Controller
@@ -42,11 +43,12 @@ class FinishBillController extends Controller
     {
         $finishbill = FinishBill::find($id);
         $sellbills = SellBill::all();
+        $sellbillsbycs = SellBillByc::all();
 
         return view('editFinishBill',
         [
             'finishbill'=>$finishbill,
-            'sellbills'=>$sellbills
+            'sellbills'=>$sellbills->merge($sellbillsbycs)
         ]);
     }
 
@@ -85,5 +87,17 @@ class FinishBillController extends Controller
         $finishbill = FinishBill::find($id);
         $finishbill->delete();
         return redirect()->route('allData');
+    }
+
+    public function show($id)
+    {
+        $finishbill = FinishBill::find($id);
+        $sellbills = SellBill::all();
+
+        return view('showFinishBill',
+        [
+            'finishbill'=>$finishbill,
+            'sellbills' => $sellbills
+        ]);
     }
 }

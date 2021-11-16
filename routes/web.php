@@ -81,6 +81,7 @@ Route::POST('/store/renew',[ReNewController::class,'store'])->name('store.renew'
 Route::GET('/edit/renew/{id}',[RenewController::class,'editRenew'])->name('edit.renew');
 Route::POST('/update/renew/{id}',[RenewController::class,'update'])->name('update.renew');
 Route::POST('/delete/renew/{id}',[RenewController::class,'destroy'])->name('delete.renew');
+Route::GET('/show/renew/{id}',[RenewController::class,'show'])->name('show.renew');
 
 
 //Finish Route
@@ -88,6 +89,7 @@ Route::POST('/store/finish',[FinishBillController::class,'store'])->name('store.
 Route::GET('/edit/finish/{id}',[FinishBillController::class,'edit'])->name('edit.finish');
 Route::POST('/update/finish/{id}',[FinishBillController::class,'update'])->name('update.finish');
 Route::POST('/delete/finish/{id}',[FinishBillController::class,'destroy'])->name('delete.finish');
+Route::GET('/show/finish/{id}',[FinishBillController::class,'show'])->name('show.finish');
 
 
 Route::GET('/downloadPdf/{sellbill}',[DataController::class,'downloadPdf'])->name('downloadPdf');

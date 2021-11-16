@@ -767,6 +767,7 @@
                                                     <th>تاريخ الخطاب</th>
                                                     <th></th>
                                                     <th></th>
+                                                    <th></th>
                                                 </thead>
 
                                                 <tbody>
@@ -785,6 +786,7 @@
                                                             @csrf
                                                             <td><button class="btn btn-danger">حذف</button></td>
                                                         </form>
+                                                        <td><a href="{{ route('show.renew',$renew->id) }}" class="btn btn-success">عرض</a></td>
                                                     </tr>
                                                     @endforeach
 
@@ -975,6 +977,7 @@
                                                     <th>تاريخ المخالصة</th>
                                                     <th></th>
                                                     <th></th>
+                                                    <th></th>
                                                 </thead>
 
                                                 <tbody>
@@ -993,6 +996,8 @@
                                                             @csrf
                                                         <td><button class="btn btn-danger">حذف</button></td>
                                                         </form>
+
+                                                        <td><a href="{{ route('show.finish',$finishbill->id) }}" class="btn btn-success" href="">عرض</a></td>
                                                     </tr>
                                                     @endforeach
 
@@ -1956,6 +1961,7 @@
                                                         <td><a href="{{ route('edit.taxBillByc',$taxbill->id) }}" class="btn btn-warning">تعديل</a></td>
                                                         <form action="{{ route('delete.taxBillByc',$taxbill->id) }}" method="POST">
                                                             @csrf
+                                                            <td><button class="btn btn-danger" type="submit" >حذف</button></td>
                                                         </form>
                                                         <td><a href="{{ route('show.taxBillByc',$taxbill->id) }}" target="_blank" class="btn btn-success">عرض</a></td>
                                                     </tr>
@@ -2103,6 +2109,7 @@
                                                         <td><a href="{{ route('edit.taxBillCar',$taxbill->id) }}" class="btn btn-warning">تعديل</a></td>
                                                         <form action="{{ route('delete.taxBillCar',$taxbill->id) }}" method="POST">
                                                         @csrf
+                                                        <td><button class="btn btn-danger" type="submit">حذف</button></td>
                                                         </form>
                                                         <td><a href="{{ route('show.taxBillCar',$taxbill->id) }}" class="btn btn-success" target="_blank">عرض</a></td>
                                                     </tr>

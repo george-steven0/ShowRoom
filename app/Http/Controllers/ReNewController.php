@@ -59,11 +59,12 @@ class ReNewController extends Controller
     {
         $renew = RenewBill::find($id);
         $sellbills = SellBill::all();
+        $sellbillbycs = SellBillByc::all();
 
         return view('editRenewBill',
         [
             'renew'=>$renew,
-            'sellbills'=>$sellbills
+            'sellbills'=>$sellbills->merge($sellbillbycs)
         ]);
     }
 
@@ -104,6 +105,15 @@ class ReNewController extends Controller
         $renew->delete();
 
         return redirect()->route('allData');
+    }
+
+    public function show($id)
+    {
+        $renew = RenewBill::find($id);
+        return view('showRenewBill',
+        [
+            'renew'=>$renew
+        ]);
     }
 
 
