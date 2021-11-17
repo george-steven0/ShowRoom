@@ -16,6 +16,7 @@
         "laravel/tinker": "^2.5",
         "mpdf/mpdf": "^8.0",
         "pdfanonymous/phpanonymous": "dev-master",
+        "spatie/laravel-backup": "^6.16",
         "stichoza/google-translate-php": "^4.1",
         "sujalpatel/inttoenglish": "^1.0"
     },
