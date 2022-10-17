@@ -95,4 +95,5 @@ Route::GET('/show/finish/{id}',[FinishBillController::class,'show'])->name('show
 Route::GET('/downloadPdf/{sellbill}',[DataController::class,'downloadPdf'])->name('downloadPdf');
 Route::GET('/showPdf',[DataController::class,'showPdf']);
 Route::GET('/pdf',[DataController::class,'test']);
+Route::GET('/backup',[DataController::class,'backup'])->name('backup');
 

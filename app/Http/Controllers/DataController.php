@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use PDF;
 use App\Models\Client;
 use App\Models\Dealer;
 use App\Models\BuyBill;
-use App\Models\FinishBill;
-use App\Models\RenewBill;
 use App\Models\SellBill;
-use App\Models\SellBillByc;
+use App\Models\RenewBill;
+use App\Models\FinishBill;
 use App\Models\TaxBillByc;
 use App\Models\TaxBillCar;
+use App\Models\SellBillByc;
 use Illuminate\Http\Request;
-use PDF;
+use Illuminate\Support\Facades\Log;
+use Spatie\Browsershot\Browsershot;
+use Illuminate\Support\Facades\Artisan;
+
 
 class DataController extends Controller
 {
@@ -42,5 +46,10 @@ class DataController extends Controller
         ]);
     }
 
+    public function backup()
+    {
+
+        Artisan::output("backup:run --only db --disable notifications");
+    }
 
 }

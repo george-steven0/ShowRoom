@@ -15,6 +15,7 @@
 
 </head>
 <body>
+
     <section class="main-page">
         <div class="container-fluid">
             <div class="row">
@@ -127,6 +128,7 @@
                                                     <th>نوع الفاتوره</th>
                                                     <th></th>
                                                     <th></th>
+                                                    <a href="{{ route('backup') }}">backup</a>
                                                 </thead>
 
                                                 <tbody>
